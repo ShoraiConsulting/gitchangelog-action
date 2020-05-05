@@ -1,0 +1,15 @@
+name: 'Gitchangelog Action'
+description: 'Generate gitchangelog for newly created tag and release it'
+author: 'ynd-consult-ug'
+inputs:
+  changelog:
+    description: 'Path to changelog file'
+    required: false
+env:
+  GITHUB_TOKEN: 'Github Auth Token'
+runs:
+  using: 'docker'
+  image: 'ynd-consult-ug/gitchangelog-action:latest'
+branding:
+  color: 'purple'
+  icon: 'package'
