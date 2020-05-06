@@ -9,7 +9,7 @@ LABEL "com.github.actions.color"="purple"
 
 RUN apk add --no-cache bash git jq
 
-RUN pip3 install -y gitchangelog
+RUN pip3 install gitchangelog
 
 COPY entrypoint.sh /entrypoint.sh
 
