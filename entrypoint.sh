@@ -21,7 +21,9 @@ else
   CONTENT_TYPE_HEADER="Content-Type: application/zip"
 fi
 
-RELEASE_URL="https://uploads.github.com/repos/${GITHUB_REPOSITORY}/releases/${TAG_NAME}"
+RELEASE_URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/releases"
+
+echo $RELEASE_URL
 
 BODY=$(cat <<EOF
 {
