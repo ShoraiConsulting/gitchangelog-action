@@ -7,7 +7,7 @@ LABEL "com.github.actions.description"="Generate gitchangelog for newly created 
 LABEL "com.github.actions.icon"="package"
 LABEL "com.github.actions.color"="purple"
 
-RUN apk add --no-cache bash git jq
+RUN apk add --no-cache bash git jq curl
 
 RUN pip3 install gitchangelog
 
