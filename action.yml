@@ -9,7 +9,7 @@ env:
   GITHUB_TOKEN: 'Github Auth Token'
 runs:
   using: 'docker'
-  image: 'ynd-consult-ug/gitchangelog-action:latest'
+  image: 'Dockerfile'
 branding:
   color: 'purple'
   icon: 'package'
