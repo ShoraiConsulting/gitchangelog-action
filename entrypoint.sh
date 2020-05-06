@@ -45,5 +45,5 @@ curl \
   -H "${AUTH_HEADER}" \
   -H "${CONTENT_LENGTH_HEADER}" \
   -H "${CONTENT_TYPE_HEADER}" \
-  --data $BODY
+  --data "${BODY}"
   "${RELEASE_URL}"
