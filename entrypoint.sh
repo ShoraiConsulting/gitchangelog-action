@@ -13,7 +13,7 @@ gitchangelog ${TAG_NAME} > CHANGELOG.md
 
 # Prepare the headers
 AUTH_HEADER="Authorization: token ${GITHUB_TOKEN}"
-CONTENT_LENGTH_HEADER="Content-Length: $(stat -c%s "${1}")"
+CONTENT_LENGTH_HEADER="Content-Length: $(stat -c%s CHANGELOG.md)"
 
 if [[ -z "$2" ]]; then
   CONTENT_TYPE_HEADER="Content-Type: ${2}"
