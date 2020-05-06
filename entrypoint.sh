@@ -34,15 +34,15 @@ BODY = <<EOF
 }
 EOF
 
-
 echo $BODY
 
 # Upload the file
-# curl \
-#   -f \
-#   -sSL \
-#   -XPOST \
-#   -H "${AUTH_HEADER}" \
-#   -H "${CONTENT_LENGTH_HEADER}" \
-#   -H "${CONTENT_TYPE_HEADER}" \
-#   "${RELEASE_URL}"
+curl \
+  -f \
+  -sSL \
+  -XPOST \
+  -H "${AUTH_HEADER}" \
+  -H "${CONTENT_LENGTH_HEADER}" \
+  -H "${CONTENT_TYPE_HEADER}" \
+  --data $BODY
+  "${RELEASE_URL}"
