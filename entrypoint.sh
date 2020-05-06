@@ -11,26 +11,20 @@ fi
 
 gitchangelog ${TAG_NAME} > CHANGELOG.md
 
+cat CHANGELOG.md
+
 # Prepare the headers
 AUTH_HEADER="Authorization: token ${GITHUB_TOKEN}"
 CONTENT_LENGTH_HEADER="Content-Length: $(stat -c%s CHANGELOG.md)"
-
-if [[ -z "$2" ]]; then
-  CONTENT_TYPE_HEADER="Content-Type: ${2}"
-else
-  CONTENT_TYPE_HEADER="Content-Type: application/zip"
-fi
-
+CONTENT_TYPE_HEADER="Content-Type: application/json"
 RELEASE_URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/releases"
-
-echo $RELEASE_URL
 
 BODY=$(cat <<EOF
 {
   "tag_name": "${TAG_NAME}",
   "target_commitish": "master",
   "name": "${TAG_NAME}",
-  "body": "$()",
+  "body": "$(cat CHANGELOG.md)",
   "draft": false,
   "prerelease": false
 }
