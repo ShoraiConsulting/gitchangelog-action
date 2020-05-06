@@ -23,7 +23,7 @@ fi
 
 RELEASE_URL="https://uploads.github.com/repos/${GITHUB_REPOSITORY}/releases/${TAG_NAME}"
 
-BODY = <<EOF
+BODY=$(cat <<EOF
 {
   "tag_name": "${TAG_NAME}",
   "target_commitish": "master",
@@ -33,6 +33,7 @@ BODY = <<EOF
   "prerelease": false
 }
 EOF
+)
 
 echo $BODY
 
