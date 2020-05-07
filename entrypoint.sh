@@ -9,19 +9,23 @@ if [[ -z "$GITHUB_TOKEN" ]]; then
   exit 1
 fi
 
-gitchangelog ${TAG_NAME} > CHANGELOG.md
+PREVIOUS_TAG=`git tag --sort=committerdate | tail -2 | head -1`
+echo $PREVIOUS_TAG
 
-cat CHANGELOG.md
+# Save only last version's changelog
+gitchangelog $PREVIOUS_TAG..$TAG_NAME > CHANGELOG.md
+# GH requires empty lines
+sed -e 's/$/\\n/' -i CHANGELOG.md
 
 # Prepare the headers
 AUTH_HEADER="Authorization: token ${GITHUB_TOKEN}"
-CONTENT_LENGTH_HEADER="Content-Length: $(stat -c%s CHANGELOG.md)"
 CONTENT_TYPE_HEADER="Content-Type: application/json"
 RELEASE_URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/releases"
 
-BODY=$(cat <<EOF
+# Write JSON to file to safely read it in curl
+tee temp <<EOF
 {
-  "tag_name": "${TAG_NAME}",
+  "tag_name": "$TAG_NAME",
   "target_commitish": "master",
   "name": "${TAG_NAME}",
   "body": "$(cat CHANGELOG.md)",
@@ -29,17 +33,11 @@ BODY=$(cat <<EOF
   "prerelease": false
 }
 EOF
-)
-
-echo $BODY
 
 # Upload the file
 curl \
-  -f \
-  -sSL \
   -XPOST \
-  -H "${AUTH_HEADER}" \
-  -H "${CONTENT_LENGTH_HEADER}" \
-  -H "${CONTENT_TYPE_HEADER}" \
-  --data "${BODY}" \
-  "${RELEASE_URL}"
+  -H "$AUTH_HEADER" \
+  -H "$CONTENT_TYPE_HEADER" \
+  -d @temp \
+  "$RELEASE_URL"
