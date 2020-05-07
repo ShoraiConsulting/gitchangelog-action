@@ -19,8 +19,9 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Assignee to Reviewer
-    
+    - name: Fetch all tags
+      run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+    - name: Push release
       uses: ynd-consult-ug/gitchangelog-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

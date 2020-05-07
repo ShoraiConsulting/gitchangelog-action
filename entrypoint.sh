@@ -42,5 +42,4 @@ curl \
   -H "$AUTH_HEADER" \
   -H "$CONTENT_TYPE_HEADER" \
   -d @temp \
-  -vv \
   "$RELEASE_URL"
