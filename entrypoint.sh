@@ -9,7 +9,8 @@ if [[ -z "$GITHUB_TOKEN" ]]; then
   exit 1
 fi
 
-PREVIOUS_TAG=`git tag --sort=committerdate | tail -2 | head -1`
+git tag --sort=committerdate
+PREVIOUS_TAG=`git tag --sort=committerdate | tail -3 | head -1`
 echo $PREVIOUS_TAG
 
 # Save only last version's changelog
