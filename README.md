@@ -11,7 +11,7 @@ name: Generate release with changelog
 on:
   create:
     tags:
-      - v*
+      - '*'
 
 jobs:
   docs:
@@ -19,6 +19,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+      with:
+          fetch-depth: 0
     - name: Fetch all tags
       run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
     - name: Push release
@@ -26,7 +28,6 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         TAG_NAME: ${{ github.ref }}
-
 ```
 
 

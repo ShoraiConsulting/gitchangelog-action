@@ -11,10 +11,11 @@ fi
 
 TAG=${TAG_NAME/refs\/tags\//}
 PREVIOUS_TAG=`git tag --sort=committerdate | tail -2 | head -1`
+
 echo $PREVIOUS_TAG
 
 gitchangelog $PREVIOUS_TAG..$TAG > CHANGELOG.md
-# GH requires empty lines
+# GH requires empty lines for parsing/rendering
 sed -e 's/$/\\n/' -i CHANGELOG.md
 
 cat CHANGELOG.md
