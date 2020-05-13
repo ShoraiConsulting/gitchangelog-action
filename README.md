@@ -31,3 +31,7 @@ jobs:
 ## License
 
 The Dockerfile and associated scripts and documentation in this project are released under the [MIT License](LICENSE).
+
+## See also
+
+Image on Docker Hub: [yndconsult/gitchangelog-action](https://hub.docker.com/r/yndconsult/gitchangelog-action).
