@@ -7,7 +7,7 @@ This Action automatically creates a GitHub release when new tag is pushed. Relea
 ```workflow
 name: Generate release with changelog
 on:
-  create:
+  push:
     tags:
       - '*'
 
