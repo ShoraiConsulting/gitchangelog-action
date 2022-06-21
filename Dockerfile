@@ -1,7 +1,7 @@
 FROM python:alpine
 
-LABEL repository="http://github.com/ynd-consult-ug/gitchangelog-action"
-LABEL homepage="http://github.com/ynd-consult-ug/gitchangelog-action"
+LABEL repository="http://github.com/ShoraiConsulting/gitchangelog-action"
+LABEL homepage="http://github.com/ShoraiConsulting/gitchangelog-action"
 LABEL "com.github.actions.name"="Gitchangelog Action"
 LABEL "com.github.actions.description"="Generate gitchangelog for newly created tag and release it"
 LABEL "com.github.actions.icon"="package"
