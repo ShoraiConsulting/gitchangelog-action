@@ -1,6 +1,6 @@
 name: 'Gitchangelog Action'
 description: 'Generate gitchangelog for newly created tag and release it'
-author: 'ynd-consult-ug'
+author: 'ShoraiConsulting'
 inputs:
   changelog:
     description: 'Path to changelog file'
