@@ -9,6 +9,8 @@ if [[ -z "$GITHUB_TOKEN" ]]; then
   exit 1
 fi
 
+git config --global --add safe.directory .
+
 TAG=${TAG_NAME/refs\/tags\//}
 PREVIOUS_TAG=`git tag --sort=committerdate | tail -2 | head -1`
 
